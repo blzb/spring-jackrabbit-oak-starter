@@ -1,0 +1,1 @@
+# spring-jackrabbit-oak-starter
