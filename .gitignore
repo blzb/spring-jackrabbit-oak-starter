@@ -1,0 +1,12 @@
+ld
+out
+.gradletasknamecache
+*.iml
+*.ipr
+*.iws
+.idea
+README.html
+node_modules/
+generated/
+*.log
+2.2/
