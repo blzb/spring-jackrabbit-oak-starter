@@ -1,4 +1,5 @@
-ld
+.gradle
+build
 out
 .gradletasknamecache
 *.iml
