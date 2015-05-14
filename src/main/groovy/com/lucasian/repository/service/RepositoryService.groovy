@@ -10,6 +10,7 @@ interface RepositoryService{
   List<RepositoryItem> listItemsInPath(String path)
   List<RepositoryItem> listFilesInPath(String path)
   Map getVersionContent(String path, String version)
+  Map getContent(String path)
   List<RepositoryItem> query(String queryText)
   String createFolder(String path)
 }

@@ -220,7 +220,9 @@ class RepositoryServiceJackrabbitImpl implements RepositoryService {
       if (session != null) session.logout()
     }
   }
-
+  Map getContent(String path){
+    getVersionContent(path, null)
+  }
   Map getVersionContent(String path, String version) {
     Session session = null
     try {
@@ -247,14 +249,15 @@ class RepositoryServiceJackrabbitImpl implements RepositoryService {
           }
         }
       } else {
+        VersionIterator i = node.getVersionHistory().getAllVersions()
         Version v = null
         while (i.hasNext()) {
           v = i.nextVersion()
         }
         NodeIterator nodeIterator = v.getNodes()
         Node currentNode = nodeIterator.nextNode()
-        contentNode = currentNode.getNode("jcr:content")
 
+        contentNode = currentNode.getNode("jcr:content")
       }
       [
         stream: contentNode.getProperty("jcr:data").getBinary().getStream(),
@@ -320,9 +323,10 @@ class RepositoryServiceJackrabbitImpl implements RepositoryService {
       while (i.hasNext()) {
         System.out.println("_____________________________")
         System.out.println("_____________________________")
-        System.out.println("_____________________________")
-        System.out.println("_____________________________")
         Version v = i.nextVersion()
+        print(v.getName())
+        System.out.println("_____________________________")
+        System.out.println("_____________________________")
         NodeIterator nodeIterator = v.getNodes()
         while (nodeIterator.hasNext()) {
           Node currentNode = nodeIterator.nextNode()
